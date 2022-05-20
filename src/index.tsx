@@ -4,12 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const WORKOUTS = [
+  { id: "workout-0", name: "Barbell Curls", completed: true },
+  { id: "workout-1", name: "Hungarian Deadlifts", completed: false },
+  { id: "workout-2", name: "Overhead Press", completed: false }
+];
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App workouts={WORKOUTS} />
   </React.StrictMode>
 );
 
