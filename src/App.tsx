@@ -18,12 +18,13 @@ function App(props) {
   const [workouts, setWorkouts] = useState(props.workouts);
   const [filter, setFilter] = useState('All');
 
-  function addWorkout(name, reps, sets, type) {
+  function addWorkout(name, reps, sets, weight, type) {
     const newWorkout = {
       id: "workout-" + nanoid(),
       name,
       reps,
       sets,
+      weight,
       type,
       created_at: new Date().toLocaleDateString(),
       updated_at: new Date().toLocaleDateString()
@@ -31,10 +32,10 @@ function App(props) {
     setWorkouts([...workouts, newWorkout]);
   }
 
-  function editWorkout(id, newName, newReps, newSets) {
+  function editWorkout(id, newName, newReps, newSets, newWeight) {
     const editedWorkoutList = workouts.map(workout => {
       if (id === workout.id) {
-        return { ...workout, name: newName, reps: newReps, sets: newSets, updated_at: new Date().toLocaleDateString()}
+        return { ...workout, name: newName, reps: newReps, sets: newSets, weight: newWeight, updated_at: new Date().toLocaleDateString() }
       }
       return workout;
     });
@@ -54,6 +55,7 @@ function App(props) {
       name={workout.name}
       reps={workout.reps}
       sets={workout.sets}
+      weight={workout.weight}
       created_at={workout.created_at}
       deleteWorkout={deleteWorkout}
       editWorkout={editWorkout}

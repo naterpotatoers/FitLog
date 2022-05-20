@@ -6,6 +6,8 @@ export default function Workout(props) {
   const [newName, setNewName] = useState(props.name);
   const [newReps, setNewReps] = useState(props.reps);
   const [newSets, setNewSets] = useState(props.sets);
+  const [newWeight, setNewWeight] = useState(props.weight);
+
 
 
   function handleNameChange(event) {
@@ -20,12 +22,17 @@ export default function Workout(props) {
     setNewReps(event.target.value);
   }
 
+  function handleWeightChange(event) {
+    setNewWeight(event.target.value);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.editWorkout(props.id, newName, newReps, newSets);
+    props.editWorkout(props.id, newName, newReps, newSets, newWeight);
     setNewName(props.name);
     setNewReps(props.reps);
     setNewSets(props.sets);
+    setNewWeight(props.weight);
     setEditing(false);
   }
 
@@ -33,7 +40,7 @@ export default function Workout(props) {
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="workout-label" htmlFor={props.id}>
-          Originally: {props.name} - Sets: {props.sets} Reps: {props.reps}
+          Originally: {props.name} - Sets: {props.sets} Reps: {props.reps} Weight: {props.weight}
         </label>
         <input
           id={props.id}
@@ -56,6 +63,13 @@ export default function Workout(props) {
           value={newReps}
           onChange={handleRepChange}
         />
+        <input
+          id={props.weight}
+          className="workout-text"
+          type="text"
+          value={newWeight}
+          onChange={handleWeightChange}
+        />
       </div>
       <div className="btn-group">
         <button type="button" className="btn workout-cancel" onClick={() => setEditing(false)}>
@@ -74,7 +88,7 @@ export default function Workout(props) {
     <div className="stack-small">
       <div className="">
         <label className="workout-label" htmlFor={props.id}>
-          <b>{props.name}</b> {props.sets}x{props.reps} {props.created_at}
+          <b>{props.name}</b> {props.sets}x{props.reps} {props.weight}lbs {props.created_at}
         </label>
       </div>
       <div className="btn-group">

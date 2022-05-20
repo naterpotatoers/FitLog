@@ -4,7 +4,9 @@ function Form(props) {
     const [name, setName] = useState('');
     const [reps, setReps] = useState('');
     const [sets, setSets] = useState('');
+    const [weight, setWeight] = useState("");
     const [type, setType] = useState("");
+
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -18,16 +20,21 @@ function Form(props) {
         setSets(event.target.value);
     }
 
+    function handleWeightChange(event) {
+        setWeight(event.target.value);
+    }
+
     function handleTypeChange(event) {
         setType(event.target.value);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        props.addWorkout(name, reps, sets, type);
+        props.addWorkout(name, reps, sets, weight, type);
         setName("");
         setReps("");
         setSets("");
+        setWeight("");
         setType("");
     }
     return (
@@ -41,7 +48,7 @@ function Form(props) {
                 id="new-workout-input"
                 className="input workout-text"
                 name="text"
-                autoComplete="off"
+                autoComplete="on"
                 required
                 value={name}
                 onChange={handleNameChange}
@@ -65,6 +72,16 @@ function Form(props) {
                 autoComplete="off"
                 value={reps}
                 onChange={handleRepsChange}
+            />
+            <label htmlFor={weight} className="label-wrapper">Weight</label>
+            <input
+                type="text"
+                id="new-workout-input"
+                className="input workout-text"
+                name="text"
+                autoComplete="off"
+                value={weight}
+                onChange={handleWeightChange}
             />
             <label htmlFor={type} className="label-wrapper">Targeted Body Part</label>
             <input
