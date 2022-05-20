@@ -5,9 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const WORKOUTS = [
-  { id: "workout-0", name: "Barbell Curls", completed: true },
-  { id: "workout-1", name: "Hungarian Deadlifts", completed: false },
-  { id: "workout-2", name: "Overhead Press", completed: false }
+  { id: "workout-0", name: "Barbell Curls", reps: 12, sets: 3, type: "Upperbody", created_at: new Date().toLocaleDateString(), updated_at: new Date().toLocaleDateString() },
+  { id: "workout-1", name: "Hungarian Deadlifts", reps: 8, sets: 4, type: "Lowerbody", created_at: new Date().toLocaleDateString(), updated_at: new Date().toLocaleDateString() },
+  { id: "workout-2", name: "Overhead Press", reps: 10, sets: 4, type: "Upperbody", created_at: new Date().toLocaleDateString(), updated_at: new Date().toLocaleDateString() },
+  { id: "workout-3", name: "Sprints", type: "Cardio", created_at: new Date().toLocaleDateString(), updated_at: new Date().toLocaleDateString() }
+
 ];
 
 const root = ReactDOM.createRoot(

@@ -3,16 +3,29 @@ import { useState } from "react";
 
 export default function Workout(props) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState(props.name);
+  const [newReps, setNewReps] = useState(props.reps);
+  const [newSets, setNewSets] = useState(props.sets);
 
-  function handleChange(event) {
+
+  function handleNameChange(event) {
     setNewName(event.target.value);
+  }
+
+  function handleSetChange(event) {
+    setNewSets(event.target.value);
+  }
+
+  function handleRepChange(event) {
+    setNewReps(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.callbackPropEditWorkout(props.id, newName);
-    setNewName("");
+    props.editWorkout(props.id, newName, newReps, newSets);
+    setNewName(props.name);
+    setNewReps(props.reps);
+    setNewSets(props.sets);
     setEditing(false);
   }
 
@@ -20,14 +33,28 @@ export default function Workout(props) {
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="workout-label" htmlFor={props.id}>
-          Old name: {props.name}
+          Originally: {props.name} - Sets: {props.sets} Reps: {props.reps}
         </label>
         <input
           id={props.id}
           className="workout-text"
           type="text"
           value={newName}
-          onChange={handleChange}
+          onChange={handleNameChange}
+        />
+        <input
+          id={props.sets}
+          className="workout-text"
+          type="text"
+          value={newSets}
+          onChange={handleSetChange}
+        />
+        <input
+          id={props.reps}
+          className="workout-text"
+          type="text"
+          value={newReps}
+          onChange={handleRepChange}
         />
       </div>
       <div className="btn-group">
@@ -45,15 +72,9 @@ export default function Workout(props) {
 
   const viewTemplate = (
     <div className="stack-small">
-      <div className="c-cb">
-        <input
-          id={props.id}
-          type="checkbox"
-          defaultChecked={props.completed}
-          onChange={() => props.callbackPropToggleWorkoutCompleted(props.id)}
-        />
+      <div className="">
         <label className="workout-label" htmlFor={props.id}>
-          {props.name}
+          <b>{props.name}</b> {props.sets}x{props.reps} {props.created_at}
         </label>
       </div>
       <div className="btn-group">
@@ -63,7 +84,7 @@ export default function Workout(props) {
         <button
           type="button"
           className="btn btn__danger"
-          onClick={() => props.callbackPropDeleteWorkout(props.id)}
+          onClick={() => props.deleteWorkout(props.id)}
         >
           Delete <span className="visually-hidden">{props.name}</span>
         </button>

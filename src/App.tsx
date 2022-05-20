@@ -7,34 +7,34 @@ import FilterButton from './components/FilterButton'
 
 const FILTER_MAP = {
   All: () => true,
-  Active: workout => !workout.completed,
-  Completed: workout => workout.completed
+  Upperbody: workout => workout.type === "Upperbody",
+  Lowerbody: workout => workout.type === "Lowerbody",
+  Cardio: workout => workout.type === "Cardio"
 };
+
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
   const [workouts, setWorkouts] = useState(props.workouts);
   const [filter, setFilter] = useState('All');
 
-  function addWorkout(name) {
-    const newWorkout = { id: "workout-" + nanoid(), name: name, completed: false };
+  function addWorkout(name, reps, sets, type) {
+    const newWorkout = {
+      id: "workout-" + nanoid(),
+      name,
+      reps,
+      sets,
+      type,
+      created_at: new Date().toLocaleDateString(),
+      updated_at: new Date().toLocaleDateString()
+    };
     setWorkouts([...workouts, newWorkout]);
   }
 
-  function toggleWorkoutCompleted(id) {
-    const updatedWorkouts = workouts.map(workout => {
-      if (id === workout.id) {
-        return { ...workout, completed: !workout.completed }
-      }
-      return workout;
-    });
-    setWorkouts(updatedWorkouts);
-  }
-
-  function editWorkout(id, newName) {
+  function editWorkout(id, newName, newReps, newSets) {
     const editedWorkoutList = workouts.map(workout => {
       if (id === workout.id) {
-        return { ...workout, name: newName }
+        return { ...workout, name: newName, reps: newReps, sets: newSets, updated_at: new Date().toLocaleDateString()}
       }
       return workout;
     });
@@ -52,10 +52,11 @@ function App(props) {
       key={workout.id}
       id={workout.id}
       name={workout.name}
-      completed={workout.completed}
-      callbackPropToggleWorkoutCompleted={toggleWorkoutCompleted}
-      callbackPropDeleteWorkout={deleteWorkout}
-      callbackPropEditWorkout={editWorkout}
+      reps={workout.reps}
+      sets={workout.sets}
+      created_at={workout.created_at}
+      deleteWorkout={deleteWorkout}
+      editWorkout={editWorkout}
     />
   );
 
@@ -68,19 +69,15 @@ function App(props) {
     />
   ));
 
-
-  const workoutsNoun = workoutList.length !== 1 ? 'workouts' : 'workout';
-  const headingText = `${workoutList.length} ${workoutsNoun} remaining`;
-
   return (
     <div className="workoutapp stack-large">
       <h1>FitLog</h1>
-      <Form callbackPropOnSubmit={addWorkout} />
+      <Form addWorkout={addWorkout} />
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
       <h2 id="list-heading">
-        {headingText}
+        Current Workout Entry
       </h2>
       <ul
         role="list"

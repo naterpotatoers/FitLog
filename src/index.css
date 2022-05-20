@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 *:focus {
-  outline: 3px dashed #228bec;
+  outline: 1px solid #000000;
   outline-offset: 0;
 }
 html {
@@ -84,13 +84,12 @@ body {
   border-color: #d3d3d3;
 }
 .btn.toggle-btn[aria-pressed="true"] {
-  text-decoration: underline;
   border-color: #4d4d4d;
 }
 .btn__danger {
-  color: #fff;
-  background-color: #ca3c3c;
-  border-color: #bd2130;
+  color: #ffffff;
+  background-color: #e91111;
+  border-color: #000000;
 }
 .btn__filter {
   border-color: lightgrey;
@@ -270,7 +269,7 @@ body {
 }
 .c-cb > input[type="checkbox"]:focus + label::before {
   border-width: 4px;
-  outline: 3px dashed #228bec;
+  outline: 3px solid #228bec;
 }
 .c-cb > label::after {
   box-sizing: content-box;
