@@ -1,32 +1,11 @@
 import React, { useState } from "react";
 
 function Form(props) {
-    const [name, setName] = useState('');
-    const [reps, setReps] = useState('');
-    const [sets, setSets] = useState('');
+    const [name, setName] = useState("");
+    const [reps, setReps] = useState("");
+    const [sets, setSets] = useState("");
     const [weight, setWeight] = useState("");
     const [type, setType] = useState("");
-
-
-    function handleNameChange(event) {
-        setName(event.target.value);
-    }
-
-    function handleRepsChange(event) {
-        setReps(event.target.value);
-    }
-
-    function handleSetsChange(event) {
-        setSets(event.target.value);
-    }
-
-    function handleWeightChange(event) {
-        setWeight(event.target.value);
-    }
-
-    function handleTypeChange(event) {
-        setType(event.target.value);
-    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -37,6 +16,7 @@ function Form(props) {
         setWeight("");
         setType("");
     }
+
     return (
         <form onSubmit={handleSubmit}>
             <h2 className="label-wrapper label__lg">
@@ -51,7 +31,7 @@ function Form(props) {
                 autoComplete="on"
                 required
                 value={name}
-                onChange={handleNameChange}
+                onChange={(event) => setName(event.target.value)}
             />
             <label htmlFor={sets} className="label-wrapper">Sets</label>
             <input
@@ -61,7 +41,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={sets}
-                onChange={handleSetsChange}
+                onChange={(event) => setReps(event.target.value)}
             />
             <label htmlFor={reps} className="label-wrapper">Reps</label>
             <input
@@ -71,7 +51,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={reps}
-                onChange={handleRepsChange}
+                onChange={(event) => setSets(event.target.value)}
             />
             <label htmlFor={weight} className="label-wrapper">Weight</label>
             <input
@@ -81,7 +61,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={weight}
-                onChange={handleWeightChange}
+                onChange={(event) => setWeight(event.target.value)}
             />
             <label htmlFor={type} className="label-wrapper">Targeted Body Part</label>
             <input
@@ -92,7 +72,7 @@ function Form(props) {
                 autoComplete="off"
                 placeholder="Upperbody Lowerbody Cardio"
                 value={type}
-                onChange={handleTypeChange}
+                onChange={(event) => setType(event.target.value)}
             />
             <button type="submit" className="btn btn__primary btn__lg">
                 Add
