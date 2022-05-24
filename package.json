@@ -2,7 +2,7 @@
   "name": "fitlog",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://54.184.251.136:5000",
+  "proxy": "http://54.184.251.136:5000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
