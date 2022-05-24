@@ -41,7 +41,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={sets}
-                onChange={(event) => setReps(event.target.value)}
+                onChange={(event) => setSets(event.target.value)}
             />
             <label htmlFor={reps} className="label-wrapper">Reps</label>
             <input
@@ -51,7 +51,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={reps}
-                onChange={(event) => setSets(event.target.value)}
+                onChange={(event) => setReps(event.target.value)}
             />
             <label htmlFor={weight} className="label-wrapper">Weight</label>
             <input
