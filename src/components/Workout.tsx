@@ -8,24 +8,6 @@ export default function Workout(props) {
   const [newSets, setNewSets] = useState(props.sets);
   const [newWeight, setNewWeight] = useState(props.weight);
 
-
-
-  function handleNameChange(event) {
-    setNewName(event.target.value);
-  }
-
-  function handleSetChange(event) {
-    setNewSets(event.target.value);
-  }
-
-  function handleRepChange(event) {
-    setNewReps(event.target.value);
-  }
-
-  function handleWeightChange(event) {
-    setNewWeight(event.target.value);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     props.editWorkout(props.id, newName, newReps, newSets, newWeight);
@@ -47,28 +29,28 @@ export default function Workout(props) {
           className="workout-text"
           type="text"
           value={newName}
-          onChange={handleNameChange}
+          onChange={(event) => setNewName(event.target.value)}
         />
         <input
           id={props.sets}
           className="workout-text"
           type="text"
           value={newSets}
-          onChange={handleSetChange}
+          onChange={(event) => setNewSets(event.target.value)}
         />
         <input
           id={props.reps}
           className="workout-text"
           type="text"
           value={newReps}
-          onChange={handleRepChange}
+          onChange={(event) => setNewReps(event.target.value)}
         />
         <input
           id={props.weight}
           className="workout-text"
           type="text"
           value={newWeight}
-          onChange={handleWeightChange}
+          onChange={(event) => setNewWeight(event.target.value)}
         />
       </div>
       <div className="btn-group">
