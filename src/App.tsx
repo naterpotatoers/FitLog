@@ -5,7 +5,6 @@ import axios from "axios";
 import Form from './components/Form'
 import Workout from "./components/Workout";
 import FilterButton from './components/FilterButton'
-import { WorkoutsDTO } from './data-transfer-object/workouts.dto'
 
 const FILTER_MAP = {
   All: () => true,
@@ -128,7 +127,6 @@ function App() {
         Current Workout Entry
       </h2>
       <ul
-        role="list"
         className="workout-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
