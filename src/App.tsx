@@ -32,7 +32,7 @@ function App() {
       updated_at: new Date().toLocaleDateString()
     };
 
-    await axios.post('http://localhost:5000/workouts', {
+    await axios.post('/workouts', {
       ...newWorkout
     })
       .then(function (response) {
@@ -56,7 +56,7 @@ function App() {
       return workout;
     });
 
-    await axios.patch(`http://localhost:5000/workouts/${id}`, {
+    await axios.patch(`/workouts/${id}`, {
       ...updatedWorkout
     })
       .then(function (response) {
@@ -73,7 +73,7 @@ function App() {
   async function deleteWorkout(id) {
     const remainingWorkouts = workouts.filter(workout => id !== workout.id);
 
-    await axios.delete(`http://localhost:5000/workouts/${id}`)
+    await axios.delete(`/workouts/${id}`)
       .then(function (response) {
         console.log(response);
       })
@@ -85,7 +85,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/workouts')
+    fetch('/workouts')
       .then(res => {
         return res.json();
       })
