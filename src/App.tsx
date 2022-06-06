@@ -31,7 +31,7 @@ function App() {
       updated_at: new Date().toLocaleDateString()
     };
 
-    await axios.post('/workouts', {
+    await axios.post('http://54.185.141.236:5000/workouts', {
       ...newWorkout
     })
       .then(function (response) {
@@ -55,7 +55,7 @@ function App() {
       return workout;
     });
 
-    await axios.patch(`/workouts/${id}`, {
+    await axios.patch(`http://54.185.141.236:5000/workouts/${id}`, {
       ...updatedWorkout
     })
       .then(function (response) {
@@ -72,7 +72,7 @@ function App() {
   async function deleteWorkout(id) {
     const remainingWorkouts = workouts.filter(workout => id !== workout.id);
 
-    await axios.delete(`/workouts/${id}`)
+    await axios.delete(`http://54.185.141.236:5000/workouts/${id}`)
       .then(function (response) {
         console.log(response);
       })
@@ -84,7 +84,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('/workouts')
+    fetch('http://54.185.141.236:5000/workouts')
       .then(res => {
         return res.json();
       })

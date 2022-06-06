@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function requests() {
   async function newWorkout(newWorkout) {
-    await axios.post('http://localhost:5000/workouts', {
+    await axios.post('/workouts', {
       id: newWorkout.id,
       name: newWorkout.name,
       reps: newWorkout.reps,
