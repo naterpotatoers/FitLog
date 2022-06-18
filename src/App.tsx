@@ -6,18 +6,21 @@ import Form from './components/Form'
 import Workout from "./components/Workout";
 import FilterButton from './components/FilterButton'
 
-const FILTER_MAP = {
-  All: () => true,
-  Upperbody: workout => workout.type === "Upperbody",
-  Lowerbody: workout => workout.type === "Lowerbody",
-  Cardio: workout => workout.type === "Cardio"
-};
 
-const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
   const [filter, setFilter] = useState('All');
+  const [search, setSearch] = useState("");
+
+  let FILTER_MAP = {
+    All: () => true,
+    Upperbody: workout => workout.type === "Upperbody",
+    Lowerbody: workout => workout.type === "Lowerbody",
+    Filter: workout => workout.name === search
+  };
+
+  let FILTER_NAMES = Object.keys(FILTER_MAP);
 
   async function addWorkout(name, reps, sets, weight, type) {
     const newWorkout = {
@@ -102,6 +105,7 @@ function App() {
       sets={workout.sets}
       weight={workout.weight}
       created_at={workout.created_at}
+      updated_at={workout.updated_at}
       deleteWorkout={deleteWorkout}
       editWorkout={editWorkout}
     />
@@ -120,6 +124,18 @@ function App() {
     <div className="workoutapp stack-large">
       <h1>FitLog</h1>
       <Form addWorkout={addWorkout} />
+      <form className="label-wrapper label__lg">
+        <label htmlFor={search} className="label-wrapper">Filter By Workout Name</label>
+        <input
+          type="text"
+          id="search-input"
+          className="input workout-text"
+          placeholder="Search..."
+          autoComplete="on"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+      </form>
       <div className="filters btn-group stack-exception">
         {workouts && filterList}
       </div>

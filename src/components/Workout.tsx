@@ -68,19 +68,27 @@ export default function Workout(props) {
 
   const viewTemplate = (
     <div className="stack-small">
-      <div className="">
+      <div>
         <label className="workout-label" htmlFor={props.id}>
-          <b>{props.name}</b> {props.sets}x{props.reps} {props.weight}lbs {props.created_at}
+          <b>{props.name}</b> - {props.created_at}
+          <i>{props.updated_at !== props.created_at ? " - Edited " : ""}</i>
+          <i>{props.updated_at !== props.created_at ? props.updated_at : ""}</i>
+          <div>{props.sets}x{props.reps} {props.weight}lbs</div>
         </label>
       </div>
       <div className="btn-group">
-        <button type="button" className="btn" onClick={() => setEditing(true)}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setEditing(true)}
+        >
           Edit <span className="visually-hidden">{props.name}</span>
         </button>
         <button
           type="button"
           className="btn btn__danger"
-          onClick={() => props.deleteWorkout(props.id)}
+          onClick={() => alert("Feature disabled for now...")}
+        // onClick={() => props.deleteWorkout(props.id)}
         >
           Delete <span className="visually-hidden">{props.name}</span>
         </button>
