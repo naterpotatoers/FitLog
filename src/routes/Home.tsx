@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginForm from '../components/login-form'
-import RegisterForm from '../components/register-form'
+import LoginForm from '../components/LoginForm'
+import RegisterForm from '../components/RegisterForm'
 
 export default function Home() {
   return (

@@ -1,11 +1,10 @@
 import React from "react";
-import Home from "./pages/home";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <h1>FitLog</h1>
-      <Home />
     </div>
   );
 }
