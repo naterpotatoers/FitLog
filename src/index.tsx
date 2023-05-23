@@ -1,21 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
-import Dashboard from './routes/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    <App />
+    <Header />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="dashboard" element={<Dashboard />} />
     </Routes>
   </BrowserRouter>
 );

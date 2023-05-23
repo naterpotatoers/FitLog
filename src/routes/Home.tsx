@@ -1,13 +1,10 @@
 import React from 'react'
-import LoginForm from '../components/LoginForm'
-import RegisterForm from '../components/RegisterForm'
+import Dashboard from '../components/Dashboard'
 
 export default function Home() {
   return (
     <div>
-      <h2>Home</h2>
-      <LoginForm />
-      <RegisterForm />
+      <Dashboard />
     </div>
   )
 }
