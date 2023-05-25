@@ -2,6 +2,7 @@ import React from 'react'
 import { WorkoutsDTO, MOCK_WORKOUTS } from '../dto/workouts.dto'
 
 export default function WorkoutHistory() {
+    // eslint-disable-next-line
     const [workouts, setWorkouts] = React.useState<WorkoutsDTO[]>(MOCK_WORKOUTS)
 
     const groupedWorkouts = workouts.reduce((acc, workout) => {
@@ -38,7 +39,6 @@ export default function WorkoutHistory() {
                                     {groupedWorkouts[date][exercise].map((workout: WorkoutsDTO) => {
                                         return (
                                             <div key={workout.id}>
-                                                <p>Username: {workout.username}</p>
                                                 <p>Description: {workout.description}</p>
                                                 <p>Type: {workout.type}</p>
                                                 <p>Intensity: {workout.intensity}</p>
