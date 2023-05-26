@@ -4,7 +4,7 @@ import WorkoutHistory from './WorkoutHistory'
 
 export default function Dashboard() {
     return (
-        <div>
+        <div className='grid'>
             <AddWorkout />
             <WorkoutHistory />
         </div>

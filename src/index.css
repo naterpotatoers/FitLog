@@ -1,7 +1,7 @@
 :root {
   --spacer: 1rem;
   --border-radius: 0.25rem;
-  --border: 1px solid grey;
+  --border: 1px solid rgb(100, 100, 100);
   --clr-primary: red;
   --clr-secondary: black;
   --clr-tertiary: white;
@@ -44,12 +44,13 @@ p {
 }
 
 form {
-  gap: 1.25rem;
   display: grid;
+  gap: var(--spacer);
 }
 
 input {
   font: inherit;
+  border: var(--border);
   padding: var(--spacer);
   accent-color: var(--clr-primary);
   border-radius: var(--border-radius);
@@ -65,6 +66,7 @@ input:focus {
 button {
   font: inherit;
   cursor: pointer;
+  border: var(--border);
   padding: var(--spacer);
   border-radius: var(--border-radius);
   background-color: var(--clr-background);
@@ -73,8 +75,6 @@ button {
 button:hover {
   border-color: var(--clr-primary);
 }
-
-
 
 .title {
   font-size: 1.5rem;
@@ -101,17 +101,25 @@ button:hover {
   top: 0;
   position: sticky;
   text-align: right;
+  padding: var(--spacer);
 }
 
 .grid {
   display: grid;
-  gap: var(--spacer);
+  gap: var(--spacer)
 }
 
 .border {
   padding: .5rem;
   border: var(--border);
   border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  padding: var(--spacer);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .form-item {

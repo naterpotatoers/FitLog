@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AddWorkout() {
     return (
-        <div>
+        <div className='card'>
             <h2 className='title'>Add Workout</h2>
             <form>
                 <div className='form-item'>

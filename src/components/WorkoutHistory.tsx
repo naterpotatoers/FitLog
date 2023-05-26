@@ -19,7 +19,7 @@ export default function WorkoutHistory() {
     }, {} as any)
 
     return (
-        <div>
+        <div className='card'>
             <h2 className='title'>Workouts</h2>
             <div className='grid'>
                 {Object.keys(groupedWorkouts).map((date) => {
