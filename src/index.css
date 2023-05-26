@@ -1,12 +1,28 @@
-* {
-  background-color: #f5f5f5;
+:root {
+  --clr-primary: #e12a12;
+  --clr-secondary: #c10202;
+  --clr-body: #333;
+  --clr-bg: #ddd;
+  --spacer: 1rem;
+  --border-radius: 0.25rem;
+  --border: 1px solid #ccc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
 }
 
 body {
   font-family: 'system-ui';
   font-size: 1.125rem;
-  line-height: 1.5;
-  width: min(70ch, 100% - 2rem);
+  line-height: 1.6;
+  width: min(65ch, 100% - 4rem);
   margin-inline: auto;
 }
 
@@ -15,4 +31,44 @@ svg,
 video {
   max-width: 100%;
   display: block;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+.content>*+* {
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  padding: 0.25rem 0;
+  color: var(--clr-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.col {
+  padding: 1rem;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
