@@ -19,29 +19,27 @@ export default function WorkoutHistory() {
     }, {} as any)
 
     return (
-        <div className='content'>
+        <div>
             <h2 className='title'>Workouts</h2>
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
-                    <div className='grid-ish' key={date}>
-                        <h3 className='title sticky'>{date}</h3>
+                    <div className='border' key={date}>
+                        <h3 className='subtitle sticky'>{date}</h3>
                         {Object.keys(groupedWorkouts[date]).map((exercise) => {
                             return (
                                 <div key={date + exercise}>
                                     <h4 className='subtitle'>{exercise}</h4>
-                                    <div className='grid'>
+                                    <ol>
                                         {
                                             groupedWorkouts[date][exercise].map((workout: WorkoutsDTO) => {
                                                 return (
-                                                    <div className='col' key={workout.id}>
-                                                        <p>Reps: {workout.reps}</p>
-                                                        <p>Weight: {workout.weight}</p>
-                                                        {workout.created_at !== workout.updated_at && <p>Updated: {formatCreatedDate(workout.updated_at)}</p>}
-                                                    </div>
+                                                    <li className='spacer' key={workout.id}>
+                                                        <p>{workout.reps} reps @ {workout.weight} lbs</p>
+                                                    </li>
                                                 )
                                             })
                                         }
-                                    </div>
+                                    </ol>
                                 </div>
                             )
                         })}

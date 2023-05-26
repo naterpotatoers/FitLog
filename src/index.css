@@ -1,8 +1,9 @@
 :root {
   --clr-primary: #e12a12;
   --clr-secondary: #c10202;
-  --clr-body: #333;
-  --clr-bg: #ddd;
+  --clr-tertiary: #f5f5f5;
+  --clr-dark: #989898;
+  --clr-bg: color-scheme(light dark);
   --spacer: 1rem;
   --border-radius: 0.25rem;
   --border: 1px solid #ccc;
@@ -43,10 +44,6 @@ p {
   margin: 0;
 }
 
-.content>*+* {
-  margin-top: 1rem;
-}
-
 .title {
   font-size: 1.5rem;
   color: var(--clr-primary);
@@ -58,17 +55,24 @@ p {
   color: var(--clr-secondary);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+.alternative-subtitle {
+  font-size: 1.25rem;
+  padding: 0.25rem 0;
+  color: var(--clr-dark);
 }
 
-.col {
-  padding: 1rem;
+.spacer {
+  padding-inline-start: var(--spacer);
 }
 
 .sticky {
   position: sticky;
   top: 0;
+  text-align: right;
+}
+
+.border {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: .5rem;
 }
