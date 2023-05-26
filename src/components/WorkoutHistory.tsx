@@ -19,35 +19,40 @@ export default function WorkoutHistory() {
     }, {} as any)
 
     return (
-        <div>
+        <div className='card'>
             <h2 className='title'>Workouts</h2>
-            {Object.keys(groupedWorkouts).map((date) => {
-                return (
-                    <div className='border' key={date}>
-                        <h3 className='subtitle sticky'>{date}</h3>
-                        {Object.keys(groupedWorkouts[date]).map((exercise) => {
-                            return (
-                                <div key={date + exercise}>
-                                    <h4 className='subtitle'>{exercise}</h4>
-                                    <ol>
-                                        {
-                                            groupedWorkouts[date][exercise].map((workout: WorkoutsDTO) => {
-                                                return (
-                                                    <li className='spacer' key={workout.id}>
-                                                        <p>{workout.reps} reps @ {workout.weight} lbs</p>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ol>
-                                </div>
-                            )
-                        })}
-                    </div>
-                )
-            })
+            <div className='grid'>
+                {Object.keys(groupedWorkouts).map((date) => {
+                    return (
+                        <div key={date}>
 
-            }
+                            <h3 className='subtitle sticky'>{date}</h3>
+                            <div className='border' key={date}>
+                                {Object.keys(groupedWorkouts[date]).map((exercise) => {
+                                    return (
+                                        <div key={date + exercise}>
+                                            <h4 className='subtitle'>{exercise}</h4>
+                                            <ol>
+                                                {
+                                                    groupedWorkouts[date][exercise].map((workout: WorkoutsDTO) => {
+                                                        return (
+                                                            <li className='spacer' key={workout.id}>
+                                                                <p>{workout.reps} reps @ {workout.weight} lbs</p>
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+                                            </ol>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    )
+                })
+
+                }
+            </div>
         </div>
     )
 }
