@@ -1,12 +1,29 @@
-* {
-  background-color: #f5f5f5;
+:root {
+  --clr-primary: #e12a12;
+  --clr-secondary: #c10202;
+  --clr-tertiary: #f5f5f5;
+  --clr-dark: #989898;
+  --clr-bg: color-scheme(light dark);
+  --spacer: 1rem;
+  --border-radius: 0.25rem;
+  --border: 1px solid #ccc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
 }
 
 body {
   font-family: 'system-ui';
   font-size: 1.125rem;
-  line-height: 1.5;
-  width: min(70ch, 100% - 2rem);
+  line-height: 1.6;
+  width: min(65ch, 100% - 4rem);
   margin-inline: auto;
 }
 
@@ -15,4 +32,47 @@ svg,
 video {
   max-width: 100%;
   display: block;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  padding: 0.25rem 0;
+  color: var(--clr-secondary);
+}
+
+.alternative-subtitle {
+  font-size: 1.25rem;
+  padding: 0.25rem 0;
+  color: var(--clr-dark);
+}
+
+.spacer {
+  padding-inline-start: var(--spacer);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  text-align: right;
+}
+
+.border {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: .5rem;
 }
