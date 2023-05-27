@@ -43,6 +43,12 @@ p {
   margin: 0;
 }
 
+nav {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--spacer);
+}
+
 form {
   display: grid;
   gap: var(--spacer);
