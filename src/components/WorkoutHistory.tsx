@@ -1,22 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { formatCreatedDate } from '../common/formatCreatedDate'
 import { WorkoutsDTO, MOCK_WORKOUTS } from '../dto/workouts.dto'
+import { getDocs, collection } from "firebase/firestore";
+import { db } from '../config/firebase';
 
 export default function WorkoutHistory() {
     // eslint-disable-next-line
     const [workouts, setWorkouts] = React.useState<WorkoutsDTO[]>(MOCK_WORKOUTS)
+    // eslint-disable-next-line
+    const [journals, setJournals] = React.useState<WorkoutsDTO[]>(MOCK_WORKOUTS)
 
-    const groupedWorkouts = workouts.reduce((acc, workout) => {
-        let date = formatCreatedDate(workout.created_at)
-        if (!acc[date]) {
-            acc[date] = {}
+    const collectionRef = collection(db, "journals");
+
+    // eslint-disable-next-line
+    useEffect(() => {
+        const getJournals = async () => {
+            try {
+                const result = await getDocs(collectionRef);
+                const filteredResult = result.docs.map((doc) => {
+                    return {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                })
+                console.log(filteredResult)
+            }
+            catch (e) {
+                console.log(e)
+            }
         }
-        if (!acc[date][workout.exercise]) {
-            acc[date][workout.exercise] = []
-        }
-        acc[date][workout.exercise].push(workout)
-        return acc
-    }, {} as any)
+        getJournals()
+    }, [collectionRef])
+
+    function filterJournals(workouts: any[]) {
+        const groupedWorkouts = workouts.reduce((acc, workout) => {
+            let date = formatCreatedDate(workout.created_at)
+            if (!acc[date]) {
+                acc[date] = {}
+            }
+            if (!acc[date][workout.exercise]) {
+                acc[date][workout.exercise] = []
+            }
+            acc[date][workout.exercise].push(workout)
+            return acc
+        }, {} as any)
+        return groupedWorkouts
+    }
+
+    const groupedWorkouts = filterJournals(workouts)
 
     return (
         <div className='grid'>
