@@ -1,11 +1,11 @@
 import React from 'react'
-import AddWorkout from './AddWorkout'
+import AddSet from './AddSet'
 import WorkoutHistory from './WorkoutHistory'
 
 export default function Dashboard() {
     return (
         <div className='grid'>
-            <AddWorkout />
+            <AddSet />
             <WorkoutHistory />
         </div>
     )

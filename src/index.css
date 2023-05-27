@@ -82,15 +82,8 @@ button:hover {
 }
 
 .subtitle {
-  font-size: 1.25rem;
-  padding: 0.25rem 0;
+  font-size: 1.2rem;
   color: var(--clr-primary);
-}
-
-.alternative-subtitle {
-  padding: 0.25rem 0;
-  font-size: 1.25rem;
-  color: var(--clr-tertiary);
 }
 
 .spacer {
