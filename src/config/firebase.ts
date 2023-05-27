@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+    apiKey: "AIzaSyCNuyDXk51JJiVTzFqFD617ZibJ-fu2T_I",
+    authDomain: "fitlog-a8fd9.firebaseapp.com",
+    projectId: "fitlog-a8fd9.appspot.com",
+    storageBucket: "fitlog-a8fd9",
+    messagingSenderId: "406032000795",
+    appId: "1:406032000795:web:142c51c80a589d7cf795be",
+    measurementId: "G-NGK7WTBQ7X"
 };
 
 const app = initializeApp(firebaseConfig);
