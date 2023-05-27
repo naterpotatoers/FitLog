@@ -1,20 +1,20 @@
 export type WorkoutsDTO = {
-  id: number;
+  id: string;
   username: string;
   exercise: string;
   reps: number;
-  type: string;
-  weight: number;
-  description: string;
   duration: number;
-  intensity: string;
+  intensity: number;
+  weight: number;
+  type: string;
+  description: string;
   created_at: string;
   updated_at: string;
 }
 
 export let MOCK_WORKOUTS: WorkoutsDTO[] = [
   {
-    "id": 0,
+    "id": "0",
     "username": "user1",
     "created_at": "2023-03-22T01:10:17+0000",
     "updated_at": "2023-03-22T01:10:17+0000",
@@ -22,12 +22,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Bench Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 1,
+    "id": "1",
     "username": "user1",
     "created_at": "2023-03-24T01:10:17+0000",
     "updated_at": "2023-03-24T01:10:17+0000",
@@ -35,12 +35,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Bench Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 2,
+    "id": "2",
     "username": "user1",
     "created_at": "2023-03-24T01:10:19+0000",
     "updated_at": "2023-03-24T01:10:19+0000",
@@ -48,12 +48,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Bench Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 3,
+    "id": "3",
     "username": "user1",
     "created_at": "2023-03-24T01:10:21+0000",
     "updated_at": "2023-03-24T01:10:21+0000",
@@ -61,12 +61,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Bench Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 4,
+    "id": "4",
     "username": "user1",
     "created_at": "2023-03-24T01:10:23+0000",
     "updated_at": "2023-03-24T01:10:23+0000",
@@ -74,12 +74,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Bench Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 5,
+    "id": "5",
     "username": "user1",
     "created_at": "2023-03-24T01:10:25+0000",
     "updated_at": "2023-03-24T01:10:25+0000",
@@ -87,12 +87,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 6,
+    "id": "6",
     "username": "user1",
     "created_at": "2023-03-24T01:10:27+0000",
     "updated_at": "2023-03-24T01:10:27+0000",
@@ -100,12 +100,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 7,
+    "id": "7",
     "username": "user1",
     "created_at": "2023-03-24T01:10:29+0000",
     "updated_at": "2023-03-24T01:10:29+0000",
@@ -113,12 +113,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 8,
+    "id": "8",
     "username": "user1",
     "created_at": "2023-03-24T01:10:31+0000",
     "updated_at": "2023-03-24T01:10:31+0000",
@@ -126,12 +126,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Squat",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 9,
+    "id": "9",
     "username": "user1",
     "created_at": "2023-03-24T01:10:33+0000",
     "updated_at": "2023-03-24T01:10:33+0000",
@@ -139,12 +139,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Squat",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 10,
+    "id": "10",
     "username": "user1",
     "created_at": "2023-03-24T01:10:35+0000",
     "updated_at": "2023-03-24T01:10:35+0000",
@@ -152,12 +152,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Squat",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 11,
+    "id": "11",
     "username": "user1",
     "created_at": "2023-03-24T01:10:37+0000",
     "updated_at": "2023-03-24T01:10:37+0000",
@@ -165,12 +165,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 12,
+    "id": "12",
     "username": "user1",
     "created_at": "2023-03-24T01:10:39+0000",
     "updated_at": "2023-03-24T01:10:39+0000",
@@ -178,12 +178,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 13,
+    "id": "13",
     "username": "user1",
     "created_at": "2023-03-24T01:10:41+0000",
     "updated_at": "2023-03-24T01:10:41+0000",
@@ -191,12 +191,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 13,
+    "id": "13",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -204,12 +204,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 14,
+    "id": "14",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -217,12 +217,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 15,
+    "id": "15",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -230,12 +230,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 16,
+    "id": "16",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -243,12 +243,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Deadlift",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 17,
+    "id": "17",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -256,12 +256,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Barbell Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 18,
+    "id": "18",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -269,12 +269,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Barbell Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 19,
+    "id": "19",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -282,12 +282,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Barbell Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 20,
+    "id": "20",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -295,12 +295,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Extension",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 21,
+    "id": "21",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -308,12 +308,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Extension",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 22,
+    "id": "22",
     "username": "user1",
     "created_at": "2023-03-26T01:12:41+0000",
     "updated_at": "2023-03-26T01:12:41+0000",
@@ -321,12 +321,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Extension",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 23,
+    "id": "23",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -334,12 +334,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 24,
+    "id": "24",
     "username": "user1",
     "created_at": "2023-03-26T01:10:41+0000",
     "updated_at": "2023-03-26T01:10:41+0000",
@@ -347,12 +347,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 25,
+    "id": "25",
     "username": "user1",
     "created_at": "2023-03-26T01:12:41+0000",
     "updated_at": "2023-03-26T01:12:41+0000",
@@ -360,12 +360,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Leg Curl",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 26,
+    "id": "26",
     "username": "user1",
     "created_at": "2023-03-27T01:12:41+0000",
     "updated_at": "2023-03-27T01:12:41+0000",
@@ -373,12 +373,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Standing Dumbbell Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 27,
+    "id": "27",
     "username": "user1",
     "created_at": "2023-03-27T01:10:41+0000",
     "updated_at": "2023-03-27T01:10:41+0000",
@@ -386,12 +386,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Standing Dumbbell Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 28,
+    "id": "28",
     "username": "user1",
     "created_at": "2023-03-27T01:10:41+0000",
     "updated_at": "2023-03-27T01:10:41+0000",
@@ -399,12 +399,12 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Standing Dumbbell Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   },
   {
-    "id": 29,
+    "id": "29",
     "username": "user1",
     "created_at": "2023-03-27T01:12:41+0000",
     "updated_at": "2023-03-27T01:12:41+0000",
@@ -412,7 +412,7 @@ export let MOCK_WORKOUTS: WorkoutsDTO[] = [
     "description": "Description for Standing Dumbbell Overhead Press",
     "type": "Strength",
     "duration": 30,
-    "intensity": "Medium",
+    "intensity": 5,
     "reps": 10,
     "weight": 135
   }
