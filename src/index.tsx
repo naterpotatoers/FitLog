@@ -1,18 +1,23 @@
-import ReactDOM from 'react-dom/client';
-import Header from './components/Header';
-import reportWebVitals from './reportWebVitals';
-import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './routes/Home';
+import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom/client';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import './index.css'
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    <Header />
+    <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   </BrowserRouter>
 );
