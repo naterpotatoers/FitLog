@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function AddWorkout() {
+export default function AddSet() {
     return (
-        <div className='card'>
-            <h2 className='title'>Add Workout</h2>
-            <form>
+        <div className='grid'>
+            <h2 className='title'>Add Set</h2>
+            <form className='card'>
                 <div className='form-item'>
                     <label htmlFor="exercise">Exercise</label>
                     <input
