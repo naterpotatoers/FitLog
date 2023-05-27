@@ -33,6 +33,10 @@ video {
   max-width: 100%;
 }
 
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+}
 
 h1,
 h2,
@@ -47,6 +51,7 @@ nav {
   display: grid;
   grid-auto-flow: column;
   gap: var(--spacer);
+  grid-template-columns: 1fr auto auto;
 }
 
 form {
@@ -67,7 +72,6 @@ input:focus {
   outline: none;
   border-color: var(--clr-primary);
 }
-
 
 button {
   font: inherit;
@@ -123,4 +127,10 @@ button:hover {
 
 .form-item {
   display: grid;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--spacer);
 }

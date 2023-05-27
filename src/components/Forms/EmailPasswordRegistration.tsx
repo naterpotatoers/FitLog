@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/firebase'
+import { Link } from 'react-router-dom'
 
 export default function EmailPasswordRegistrationForm() {
     const [formDetails, setFormDetails] = useState({
@@ -22,7 +23,7 @@ export default function EmailPasswordRegistrationForm() {
 
 
     return (
-        <div className='card'>
+        <div className='card grid'>
             <h3 className='title'>Register Form</h3>
             <form className='register-form'>
                 <div className='form-item'>
@@ -53,6 +54,7 @@ export default function EmailPasswordRegistrationForm() {
                 </div>
                 <button onClick={registerEmailPassword}>Register</button>
             </form>
+            <p>Already have an account? Login <Link to="/login">here</Link></p>
         </div >
     )
 }
