@@ -1,9 +1,12 @@
 import React from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
+
 import { auth } from '../../config/firebase'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function EmailPasswordLoginForm() {
+    const navigate = useNavigate()
     const [formDetails, setFormDetails] = React.useState({
         email: '',
         password: ''
@@ -14,6 +17,7 @@ export default function EmailPasswordLoginForm() {
         try {
             const response = await signInWithEmailAndPassword(auth, formDetails.email, formDetails.password)
             console.log(response)
+            navigate('/home')
         }
         catch (error) {
             console.log(error)
@@ -21,7 +25,7 @@ export default function EmailPasswordLoginForm() {
     }
 
     return (
-        <div className='card'>
+        <div className='card grid'>
             <h3 className='title'>Login Form</h3>
             <form className='register-form'>
                 <div className='form-item'>
@@ -52,6 +56,7 @@ export default function EmailPasswordLoginForm() {
                 </div>
                 <button onClick={loginEmailPassword}>Login</button>
             </form>
+            <p>Don't have an account? Create one <Link to="/register">here</Link></p>
         </div >
     )
 }
