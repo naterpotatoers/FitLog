@@ -7,15 +7,23 @@ import { db } from '../config/firebase';
 export default function WorkoutHistory() {
     // eslint-disable-next-line
     const [workouts, setWorkouts] = React.useState<WorkoutsDTO[]>(MOCK_WORKOUTS)
-    // const [journals, setJournals] = React.useState<any[]>([])
+    // eslint-disable-next-line
+    const [journals, setJournals] = React.useState<WorkoutsDTO[]>(MOCK_WORKOUTS)
 
     const collectionRef = collection(db, "journals");
 
+    // eslint-disable-next-line
     useEffect(() => {
         const getJournals = async () => {
             try {
                 const result = await getDocs(collectionRef);
-                console.log(result)
+                const filteredResult = result.docs.map((doc) => {
+                    return {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                })
+                console.log(filteredResult)
             }
             catch (e) {
                 console.log(e)
@@ -24,17 +32,22 @@ export default function WorkoutHistory() {
         getJournals()
     }, [collectionRef])
 
-    const groupedWorkouts = workouts.reduce((acc, workout) => {
-        let date = formatCreatedDate(workout.created_at)
-        if (!acc[date]) {
-            acc[date] = {}
-        }
-        if (!acc[date][workout.exercise]) {
-            acc[date][workout.exercise] = []
-        }
-        acc[date][workout.exercise].push(workout)
-        return acc
-    }, {} as any)
+    function filterJournals(workouts: any[]) {
+        const groupedWorkouts = workouts.reduce((acc, workout) => {
+            let date = formatCreatedDate(workout.created_at)
+            if (!acc[date]) {
+                acc[date] = {}
+            }
+            if (!acc[date][workout.exercise]) {
+                acc[date][workout.exercise] = []
+            }
+            acc[date][workout.exercise].push(workout)
+            return acc
+        }, {} as any)
+        return groupedWorkouts
+    }
+
+    const groupedWorkouts = filterJournals(workouts)
 
     return (
         <div className='grid'>

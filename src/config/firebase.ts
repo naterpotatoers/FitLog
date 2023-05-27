@@ -6,8 +6,8 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyCNuyDXk51JJiVTzFqFD617ZibJ-fu2T_I",
     authDomain: "fitlog-a8fd9.firebaseapp.com",
-    projectId: "fitlog-a8fd9.appspot.com",
-    storageBucket: "fitlog-a8fd9",
+    projectId: "fitlog-a8fd9",
+    storageBucket: "fitlog-a8fd9.appspot.com",
     messagingSenderId: "406032000795",
     appId: "1:406032000795:web:142c51c80a589d7cf795be",
     measurementId: "G-NGK7WTBQ7X"
