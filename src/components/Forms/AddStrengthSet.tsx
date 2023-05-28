@@ -1,9 +1,29 @@
-import React from 'react'
+import { useState } from 'react'
+import { StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
+import { createStrengthJournalEntry } from '../../api/journals.api';
 
-export default function AddSet() {
+
+export default function AddStrengthSet() {
+    const [journal, setJournal] = useState<StrengthJournalDTO>({
+        email: '',
+        exercise: '',
+        reps: 0,
+        weight: 0,
+        duration: 0,
+        intensity: 0,
+        entry_method: 'Manual web app entry',
+        created_at: '',
+        updated_at: '',
+    })
+
+    const uploadJournal = async (e) => {
+        e.preventDefault()
+        await createStrengthJournalEntry(journal)
+    }
+
     return (
         <div className='grid'>
-            <h2 className='title'>Add Set</h2>
+            <h2 className='title'>Add Strength Workout</h2>
             <form className='card'>
                 <div className='form-item'>
                     <label htmlFor="exercise">Exercise</label>
@@ -11,9 +31,11 @@ export default function AddSet() {
                         id='exercise'
                         name='exercise'
                         className='form-input'
+                        value={journal.exercise}
                         placeholder='Exercise'
                         aria-label='Exercise'
                         type="text"
+                        onChange={(e) => setJournal({ ...journal, exercise: e.target.value })}
                     />
                 </div>
                 <div className='form-item'>
@@ -22,9 +44,11 @@ export default function AddSet() {
                         id='reps'
                         name='reps'
                         className='form-input'
+                        value={journal.reps}
                         placeholder='Reps'
                         aria-label='Reps'
                         type="number"
+                        onChange={(e) => setJournal({ ...journal, reps: parseInt(e.target.value) })}
                     />
                 </div>
                 <div className='form-item'>
@@ -33,12 +57,14 @@ export default function AddSet() {
                         id='weight'
                         name='weight'
                         className='form-input'
+                        value={journal.weight}
                         placeholder='Weight'
                         aria-label='Weight'
                         type="number"
+                        onChange={(e) => setJournal({ ...journal, weight: parseInt(e.target.value) })}
                     />
                 </div>
-                <button>Add Workout</button>
+                <button onClick={uploadJournal}>Add Workout</button>
             </form>
         </div>
     )
