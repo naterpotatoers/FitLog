@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
-import { StrengthJournalDTO, MOCK_JOURNAL_ENTRIES } from '../dto/StrengthJournal.dto'
-import { getAllStrengthJournals } from '../api/journals.api';
+import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
+import { getUserStrengthJournals } from '../api/journals.api';
 import { filterStrengthJournals } from '../common/filterJournals';
 
 export default function WorkoutHistory() {
-    const [journals, setJournals] = React.useState<StrengthJournalDTO[]>(MOCK_JOURNAL_ENTRIES)
+    const [journals, setJournals] = React.useState<StrengthJournalDTO[]>([])
 
     useEffect(() => {
         const getJournals = async () => {
-            const result = await getAllStrengthJournals()
+            const result = await getUserStrengthJournals()
+            console.log(result)
             setJournals(result)
         }
         getJournals()
@@ -16,28 +17,41 @@ export default function WorkoutHistory() {
 
     const groupedWorkouts = filterStrengthJournals(journals)
 
+    //eslint-disable-next-line
+    const updateStrengthSet = async (e) => {
+        e.preventDefault()
+        console.log(e.target)
+    }
+
+    //eslint-disable-next-line
+    const deleteStrengthSet = async (e) => {
+        e.preventDefault()
+        console.log(e.target)
+    }
+
     return (
         <div className='grid'>
             <h2 className='title'>Workouts</h2>
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
-                    <div key={date}>
+                    <div key={date} className='strength-journal-workout'>
                         <h3 className='subtitle sticky'>{date}</h3>
                         <div className='border'>
                             {Object.keys(groupedWorkouts[date]).map((exercise) => {
                                 return (
-                                    <div key={date + exercise}>
+                                    <div key={date + exercise} className='strength-journal-exercise'>
                                         <h4 className='subtitle'>{exercise}</h4>
-                                        <ol>
-                                            {
-                                                groupedWorkouts[date][exercise].map((workout: StrengthJournalDTO) => {
-                                                    return (
-                                                        <li key={workout.email + workout.created_at}>
-                                                            {workout.reps} reps @ {workout.weight} lbs
-                                                        </li>
-                                                    )
-                                                })}
-                                        </ol>
+
+                                        {
+                                            groupedWorkouts[date][exercise].map((workout: StrengthJournalDTO) => {
+                                                return (
+                                                    <div key={workout.email + workout.created_at} className='strength-journal-set'>
+                                                        <p>{workout.reps} reps</p>
+                                                        <p>{workout.weight}lbs</p>
+                                                        <p>{workout.duration}s</p>
+                                                    </div>
+                                                )
+                                            })}
                                     </div>
                                 )
                             })}

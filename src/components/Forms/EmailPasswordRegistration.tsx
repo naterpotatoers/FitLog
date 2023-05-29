@@ -35,7 +35,7 @@ export default function EmailPasswordRegistrationForm() {
                         value={formDetails.email}
                         placeholder='Email'
                         aria-label='Email'
-                        type="text"
+                        type="email"
                         onChange={(e) => setFormDetails({ ...formDetails, email: e.target.value })}
                     />
                 </div>

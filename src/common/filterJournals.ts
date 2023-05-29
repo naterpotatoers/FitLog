@@ -12,6 +12,9 @@ export function filterStrengthJournals(workouts: StrengthJournalDTO[]): GroupedS
             acc[date][workout.exercise] = []
         }
         acc[date][workout.exercise].push(workout)
+        acc[date][workout.exercise].sort((a, b) => {
+            return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        })
         return acc
     }, {} as any)
     return result

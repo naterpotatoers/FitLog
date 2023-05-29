@@ -1,5 +1,5 @@
-import { MOCK_JOURNAL_ENTRIES, StrengthJournalDTO } from "../dto/StrengthJournal.dto";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import { StrengthJournalDTO } from "../dto/StrengthJournal.dto";
+import { doc, getDocs, collection, addDoc, deleteDoc } from "firebase/firestore";
 import { db, auth } from '../config/firebase';
 
 
@@ -8,7 +8,9 @@ export const getAllStrengthJournals = async (): Promise<StrengthJournalDTO[]> =>
         const querySnapshot = await getDocs(collection(db, "strength-journals"));
         const journals: StrengthJournalDTO[] = [];
         querySnapshot.forEach((doc) => {
-            journals.push(doc.data() as StrengthJournalDTO);
+            let journal = doc.data() as StrengthJournalDTO;
+            journal.id = doc.id;
+            journals.push(journal);
         });
         return journals;
     } catch (error) {
@@ -17,8 +19,23 @@ export const getAllStrengthJournals = async (): Promise<StrengthJournalDTO[]> =>
     }
 }
 
-export const getUserStrengthJournals = async (username: string): Promise<StrengthJournalDTO[]> => {
-    return MOCK_JOURNAL_ENTRIES
+export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> => {
+    try {
+        const querySnapshot = await getDocs(collection(db, "strength-journals"));
+        const journals: StrengthJournalDTO[] = [];
+        querySnapshot.forEach((doc) => {
+            let journal = doc.data() as StrengthJournalDTO;
+            journal.id = doc.id;
+            // this will need to be changed to a query clause
+            if (journal.email === auth.currentUser?.email) {
+                journals.push(journal);
+            }
+        });
+        return journals;
+    } catch (error) {
+        console.error("Error getting documents: ", error);
+        return [];
+    }
 }
 
 export const createStrengthJournalEntry = async (journal: StrengthJournalDTO) => {
@@ -37,7 +54,11 @@ export const updateStrengthJournal = async (journal: StrengthJournalDTO): Promis
     return journal
 }
 
-export const deleteStrengthJournal = async (id: string): Promise<StrengthJournalDTO> => {
-    return MOCK_JOURNAL_ENTRIES[0]
+export const deleteStrengthJournal = async (id: string) => {
+    try {
+        await deleteDoc(doc(db, "strength-journals", id));
+    } catch (error) {
+        console.error("Error deleting document: ", error);
+    }
 }
 

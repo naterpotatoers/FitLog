@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
 
-export default function UpdateStrengthSet() {
+export default function UpdateStrengthSet(set: StrengthJournalDTO) {
     const [journal, setJournal] = useState<StrengthJournalDTO>({
+        id: "",
         email: '',
         exercise: '',
         reps: 0,

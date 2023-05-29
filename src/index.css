@@ -134,3 +134,14 @@ button:hover {
   grid-auto-flow: column;
   gap: var(--spacer);
 }
+
+.strength-journal-set {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--spacer);
+}
+
+.strength-journal-set>p {
+  margin: 0;
+  text-align: center;
+}
