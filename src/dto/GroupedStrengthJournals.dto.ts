@@ -11,6 +11,7 @@ export const MOCK_GROUPED_JOURNALS: GroupedStrengthJournalsDTO =
     "03/22/23": {
         "Squat": [
             {
+                "id": "1",
                 "email": "example@email.com",
                 "exercise": "Squat",
                 "reps": 10,
@@ -24,6 +25,7 @@ export const MOCK_GROUPED_JOURNALS: GroupedStrengthJournalsDTO =
         ],
         "Bench Press": [
             {
+                "id": "2",
                 "email": "example@email.com",
                 "exercise": "Bench Press",
                 "reps": 10,

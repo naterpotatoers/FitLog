@@ -5,12 +5,13 @@ import { createStrengthJournalEntry } from '../../api/journals.api';
 
 export default function AddStrengthSet() {
     const [journal, setJournal] = useState<StrengthJournalDTO>({
+        id: "",
         email: '',
         exercise: '',
         reps: 0,
         weight: 0,
-        duration: 0,
-        intensity: 0,
+        duration: 40,
+        intensity: 7,
         entry_method: 'Manual web app entry',
         created_at: '',
         updated_at: '',
@@ -19,6 +20,10 @@ export default function AddStrengthSet() {
     const uploadJournal = async (e) => {
         e.preventDefault()
         await createStrengthJournalEntry(journal)
+        setJournal({
+            ...journal,
+            reps: 0
+        })
     }
 
     return (
@@ -32,7 +37,7 @@ export default function AddStrengthSet() {
                         name='exercise'
                         className='form-input'
                         value={journal.exercise}
-                        placeholder='Exercise'
+                        placeholder='Name of the Exercise'
                         aria-label='Exercise'
                         type="text"
                         onChange={(e) => setJournal({ ...journal, exercise: e.target.value })}
@@ -45,9 +50,19 @@ export default function AddStrengthSet() {
                         name='reps'
                         className='form-input'
                         value={journal.reps}
-                        placeholder='Reps'
                         aria-label='Reps'
                         type="number"
+                        onChange={(e) => setJournal({ ...journal, reps: parseInt(e.target.value) })}
+                    />
+                    <input
+                        id='reps'
+                        name='reps'
+                        className='form-input'
+                        value={journal.reps}
+                        aria-label='Reps'
+                        type="range"
+                        min="1"
+                        max="30"
                         onChange={(e) => setJournal({ ...journal, reps: parseInt(e.target.value) })}
                     />
                 </div>
@@ -58,14 +73,48 @@ export default function AddStrengthSet() {
                         name='weight'
                         className='form-input'
                         value={journal.weight}
-                        placeholder='Weight'
                         aria-label='Weight'
                         type="number"
                         onChange={(e) => setJournal({ ...journal, weight: parseInt(e.target.value) })}
                     />
+                    <input
+                        id='weight'
+                        name='weight'
+                        className='form-range'
+                        value={journal.weight}
+                        aria-label='Weight'
+                        type="range"
+                        min="0"
+                        max="500"
+                        step={5}
+                        onChange={(e) => setJournal({ ...journal, weight: parseInt(e.target.value) })}
+                    />
+                </div>
+                <div className='form-item'>
+                    <label htmlFor="duration">Duration (seconds)</label>
+                    <input
+                        id='duration'
+                        name='duration'
+                        className='form-input'
+                        value={journal.duration}
+                        aria-label='Duration'
+                        type="number"
+                        onChange={(e) => setJournal({ ...journal, duration: parseInt(e.target.value) })}
+                    />
+                    <input
+                        id='duration'
+                        name='duration'
+                        className='form-range'
+                        value={journal.duration}
+                        aria-label='Duration (seconds)'
+                        type="range"
+                        min="1"
+                        max="120"
+                        onChange={(e) => setJournal({ ...journal, duration: parseInt(e.target.value) })}
+                    />
                 </div>
                 <button onClick={uploadJournal}>Add Workout</button>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
