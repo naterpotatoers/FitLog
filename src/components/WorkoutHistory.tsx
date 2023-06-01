@@ -1,20 +1,8 @@
-import React, { useEffect } from 'react'
 import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
-import { getUserStrengthJournals } from '../api/journals.api';
 import { filterStrengthJournals } from '../common/filterJournals';
+import { deleteStrengthJournal } from '../api/journals.api';
 
-export default function WorkoutHistory() {
-    const [journals, setJournals] = React.useState<StrengthJournalDTO[]>([])
-
-    useEffect(() => {
-        const getJournals = async () => {
-            const result = await getUserStrengthJournals()
-            console.log(result)
-            setJournals(result)
-        }
-        getJournals()
-    }, [])
-
+export default function WorkoutHistory({ journals, setJournals }) {
     const groupedWorkouts = filterStrengthJournals(journals)
 
     //eslint-disable-next-line
@@ -26,7 +14,10 @@ export default function WorkoutHistory() {
     //eslint-disable-next-line
     const deleteStrengthSet = async (e) => {
         e.preventDefault()
-        console.log(e.target)
+        await deleteStrengthJournal(e.target.value)
+        setJournals(journals.filter((journal) => {
+            return journal.id !== e.target.value
+        }))
     }
 
     return (
@@ -41,14 +32,14 @@ export default function WorkoutHistory() {
                                 return (
                                     <div key={date + exercise} className='strength-journal-exercise'>
                                         <h4 className='subtitle'>{exercise}</h4>
-
                                         {
                                             groupedWorkouts[date][exercise].map((workout: StrengthJournalDTO) => {
                                                 return (
-                                                    <div key={workout.email + workout.created_at} className='strength-journal-set'>
+                                                    <div key={workout.id} className='strength-journal-set'>
                                                         <p>{workout.reps} reps</p>
                                                         <p>{workout.weight}lbs</p>
                                                         <p>{workout.duration}s</p>
+                                                        <button className='button' value={workout.id} onClick={deleteStrengthSet}>Delete</button>
                                                     </div>
                                                 )
                                             })}

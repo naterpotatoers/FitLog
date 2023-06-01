@@ -137,11 +137,15 @@ button:hover {
 
 .strength-journal-set {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: var(--spacer);
 }
 
 .strength-journal-set>p {
   margin: 0;
   text-align: center;
+}
+
+.button {
+  padding: 0;
 }
