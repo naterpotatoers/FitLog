@@ -3,7 +3,7 @@ import { StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
 import { createStrengthJournalEntry } from '../../api/journals.api';
 
 
-export default function AddStrengthSet() {
+export default function AddStrengthSet({ setJournals }) {
     const [journal, setJournal] = useState<StrengthJournalDTO>({
         id: "",
         email: '',
@@ -19,10 +19,12 @@ export default function AddStrengthSet() {
 
     const uploadJournal = async (e) => {
         e.preventDefault()
-        await createStrengthJournalEntry(journal)
-        setJournal({
-            ...journal,
-            reps: 0
+        let newJournal = { ...journal }
+        newJournal.created_at = new Date().toISOString()
+        newJournal.updated_at = new Date().toISOString()
+        await createStrengthJournalEntry(newJournal)
+        setJournals((journals) => {
+            return [...journals, journal]
         })
     }
 

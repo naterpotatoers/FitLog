@@ -41,8 +41,6 @@ export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> =
 export const createStrengthJournalEntry = async (journal: StrengthJournalDTO) => {
     try {
         journal.email = auth.currentUser?.email || '';
-        journal.created_at = new Date().toISOString()
-        journal.updated_at = new Date().toISOString()
         const result = await addDoc(collection(db, "strength-journals"), journal);
         console.log("Document written with ID: ", result.id);
     } catch (error) {
@@ -56,7 +54,8 @@ export const updateStrengthJournal = async (journal: StrengthJournalDTO): Promis
 
 export const deleteStrengthJournal = async (id: string) => {
     try {
-        await deleteDoc(doc(db, "strength-journals", id));
+        const result = await deleteDoc(doc(db, "strength-journals", id));
+        console.log(`Document ${id} successfully deleted!`, result);
     } catch (error) {
         console.error("Error deleting document: ", error);
     }
