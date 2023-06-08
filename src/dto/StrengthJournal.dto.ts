@@ -11,6 +11,19 @@ export type StrengthJournalDTO = {
   updated_at: string;
 }
 
+export let DEFAULT_STRENGTH_JOURNAL: StrengthJournalDTO = {
+  id: "",
+  email: '',
+  exercise: '',
+  reps: 0,
+  weight: 0,
+  duration: 40,
+  intensity: 7,
+  entry_method: 'Manual web app entry',
+  created_at: '',
+  updated_at: '',
+}
+
 export let MOCK_JOURNAL: StrengthJournalDTO = {
   "id": "1",
   "updated_at": "2023-05-29T19:03:21.873Z",

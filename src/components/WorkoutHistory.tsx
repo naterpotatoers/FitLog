@@ -1,17 +1,24 @@
 import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
 import { filterStrengthJournals } from '../common/filterJournals';
 import { deleteStrengthJournal } from '../api/journals.api';
+import { useState } from 'react';
+import UpdateStrengthSetDialog from './Forms/UpdateStrengthSetDialog';
 
 export default function WorkoutHistory({ journals, setJournals }) {
     const groupedWorkouts = filterStrengthJournals(journals)
+    const [dialogHandler, setDialogHandler] = useState({
+        state: "closed",
+        id: ""
+    })
 
-    //eslint-disable-next-line
-    const updateStrengthSet = async (e) => {
-        e.preventDefault()
-        console.log(e.target)
+    const handleUpdateWorkout = (e) => {
+        setDialogHandler({
+            state: "editing",
+            id: e.target.id
+        })
     }
 
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     const deleteStrengthSet = async (e) => {
         e.preventDefault()
         await deleteStrengthJournal(e.target.value)
@@ -23,6 +30,13 @@ export default function WorkoutHistory({ journals, setJournals }) {
     return (
         <div className='grid'>
             <h2 className='title'>Workouts</h2>
+            {dialogHandler.state === "editing" &&
+                <UpdateStrengthSetDialog
+                    dialogHandler={dialogHandler}
+                    setDialogHandler={setDialogHandler}
+                    journals={journals}
+                    setJournals={setJournals}
+                />}
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
                     <div key={date} className='strength-journal-workout'>
@@ -36,10 +50,13 @@ export default function WorkoutHistory({ journals, setJournals }) {
                                             groupedWorkouts[date][exercise].map((workout: StrengthJournalDTO) => {
                                                 return (
                                                     <div key={workout.id} className='strength-journal-set'>
-                                                        <p>{workout.reps} reps</p>
+                                                        <p>{workout.reps}</p>
                                                         <p>{workout.weight}lbs</p>
                                                         <p>{workout.duration}s</p>
-                                                        <button className='button' value={workout.id} onClick={deleteStrengthSet}>Delete</button>
+                                                        <div className='row'>
+                                                            <button className='edit-button' id={workout.id} onClick={handleUpdateWorkout}>&#xFE19;</button>
+                                                            {/* <button className='button' value={workout.id} onClick={deleteStrengthSet}>Delete</button> */}
+                                                        </div>
                                                     </div>
                                                 )
                                             })}
