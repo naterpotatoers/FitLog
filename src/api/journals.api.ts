@@ -1,7 +1,6 @@
 import { StrengthJournalDTO } from "../dto/StrengthJournal.dto";
-import { doc, getDocs, collection, addDoc, deleteDoc } from "firebase/firestore";
+import { doc, collection, addDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
 import { db, auth } from '../config/firebase';
-
 
 export const getAllStrengthJournals = async (): Promise<StrengthJournalDTO[]> => {
     try {
@@ -26,7 +25,6 @@ export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> =
         querySnapshot.forEach((doc) => {
             let journal = doc.data() as StrengthJournalDTO;
             journal.id = doc.id;
-            // this will need to be changed to a query clause
             if (journal.email === auth.currentUser?.email) {
                 journals.push(journal);
             }
@@ -41,6 +39,8 @@ export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> =
 export const createStrengthJournalEntry = async (journal: StrengthJournalDTO) => {
     try {
         journal.email = auth.currentUser?.email || '';
+        journal.created_at = new Date().toISOString()
+        journal.updated_at = new Date().toISOString()
         const result = await addDoc(collection(db, "strength-journals"), journal);
         console.log("Document written with ID: ", result.id);
     } catch (error) {
@@ -49,7 +49,15 @@ export const createStrengthJournalEntry = async (journal: StrengthJournalDTO) =>
 }
 
 export const updateStrengthJournal = async (journal: StrengthJournalDTO): Promise<StrengthJournalDTO> => {
-    return journal
+    try {
+        journal.updated_at = new Date().toISOString()
+        const result = await updateDoc(doc(db, "strength-journals", journal.id), journal);
+        console.log("Document", journal.id, "successfully updated!", result);
+        return journal;
+    } catch (error) {
+        console.error("Error updating document: ", error);
+        return journal;
+    }
 }
 
 export const deleteStrengthJournal = async (id: string) => {

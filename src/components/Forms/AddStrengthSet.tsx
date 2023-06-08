@@ -1,28 +1,14 @@
 import { useState } from 'react'
-import { StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
+import { DEFAULT_STRENGTH_JOURNAL, StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
 import { createStrengthJournalEntry } from '../../api/journals.api';
 
 
 export default function AddStrengthSet({ setJournals }) {
-    const [journal, setJournal] = useState<StrengthJournalDTO>({
-        id: "",
-        email: '',
-        exercise: '',
-        reps: 0,
-        weight: 0,
-        duration: 40,
-        intensity: 7,
-        entry_method: 'Manual web app entry',
-        created_at: '',
-        updated_at: '',
-    })
+    const [journal, setJournal] = useState<StrengthJournalDTO>(DEFAULT_STRENGTH_JOURNAL)
 
     const uploadJournal = async (e) => {
         e.preventDefault()
-        let newJournal = { ...journal }
-        newJournal.created_at = new Date().toISOString()
-        newJournal.updated_at = new Date().toISOString()
-        await createStrengthJournalEntry(newJournal)
+        await createStrengthJournalEntry(journal)
         setJournals((journals) => {
             return [...journals, journal]
         })

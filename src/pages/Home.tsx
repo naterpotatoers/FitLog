@@ -7,6 +7,7 @@ import { getUserStrengthJournals } from '../api/journals.api'
 
 export default function Home() {
   const [journals, setJournals] = useState<StrengthJournalDTO[]>([])
+  // const [journals, setJournals] = useState<StrengthJournalDTO[]>(MOCK_JOURNAL_ENTRIES)
 
   useEffect(() => {
     const getJournals = async () => {
