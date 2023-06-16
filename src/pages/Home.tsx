@@ -7,8 +7,9 @@ import { getUserStrengthJournals } from '../api/journals.api'
 
 export default function Home() {
   const [journals, setJournals] = useState<StrengthJournalDTO[]>([])
-  // const [journals, setJournals] = useState<StrengthJournalDTO[]>(MOCK_JOURNAL_ENTRIES)
+  // const [journals, setJournals] = useState<StrengthJournalDTO[]>(sortedMockJournals)
 
+  // comment out the following useEffect to use the mock data
   useEffect(() => {
     const getJournals = async () => {
       const result = await getUserStrengthJournals()

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { updateStrengthJournal } from '../../api/journals.api'
+import { updateStrengthJournal, deleteStrengthJournal } from '../../api/journals.api'
 import { DEFAULT_STRENGTH_JOURNAL, StrengthJournalDTO } from '../../dto/StrengthJournal.dto'
 
 export default function UpdateStrengthSetDialog({ dialogHandler, setDialogHandler, journals, setJournals }) {
@@ -17,6 +17,18 @@ export default function UpdateStrengthSetDialog({ dialogHandler, setDialogHandle
             })
         }
         )
+        setDialogHandler({
+            state: "closed",
+            id: ""
+        })
+    }
+
+    const handleDeleteJournal = async (e) => {
+        e.preventDefault()
+        await deleteStrengthJournal(journal.id)
+        setJournals(journals.filter((journal) => {
+            return journal.id !== e.target.value
+        }))
         setDialogHandler({
             state: "closed",
             id: ""
@@ -102,7 +114,8 @@ export default function UpdateStrengthSetDialog({ dialogHandler, setDialogHandle
 
                     <div className='row'>
                         <button onClick={handleCloseDialog}>Cancel</button>
-                        <button onClick={updateJournal}>Update Workout</button>
+                        <button onClick={handleDeleteJournal}>Delete</button>
+                        <button onClick={updateJournal}>Save</button>
                     </div>
                 </form >
             </div >

@@ -1,5 +1,5 @@
 import { StrengthJournalDTO } from "../dto/StrengthJournal.dto";
-import { doc, collection, addDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, collection, addDoc, getDocs, updateDoc, deleteDoc, query, orderBy } from "firebase/firestore";
 import { db, auth } from '../config/firebase';
 
 export const getAllStrengthJournals = async (): Promise<StrengthJournalDTO[]> => {
@@ -20,7 +20,7 @@ export const getAllStrengthJournals = async (): Promise<StrengthJournalDTO[]> =>
 
 export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> => {
     try {
-        const querySnapshot = await getDocs(collection(db, "strength-journals"));
+        const querySnapshot = await getDocs(query(collection(db, "strength-journals"), orderBy("created_at", "desc")));
         const journals: StrengthJournalDTO[] = [];
         querySnapshot.forEach((doc) => {
             let journal = doc.data() as StrengthJournalDTO;
@@ -29,6 +29,7 @@ export const getUserStrengthJournals = async (): Promise<StrengthJournalDTO[]> =
                 journals.push(journal);
             }
         });
+        console.log(journals)
         return journals;
     } catch (error) {
         console.error("Error getting documents: ", error);
