@@ -10,7 +10,9 @@ export default function AddStrengthSet({ setJournals }) {
         e.preventDefault()
         await createStrengthJournalEntry(journal)
         setJournals((journals) => {
-            return [...journals, journal]
+            // return [...journals, journal]
+            // put the new journal at the beginning of the array
+            return [journal, ...journals]
         })
     }
 

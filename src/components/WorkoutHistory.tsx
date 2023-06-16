@@ -1,6 +1,5 @@
 import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
 import { filterStrengthJournals } from '../common/filterJournals';
-import { deleteStrengthJournal } from '../api/journals.api';
 import { useState } from 'react';
 import UpdateStrengthSetDialog from './Forms/UpdateStrengthSetDialog';
 
@@ -16,15 +15,6 @@ export default function WorkoutHistory({ journals, setJournals }) {
             state: "editing",
             id: e.target.id
         })
-    }
-
-    // eslint-disable-next-line
-    const deleteStrengthSet = async (e) => {
-        e.preventDefault()
-        await deleteStrengthJournal(e.target.value)
-        setJournals(journals.filter((journal) => {
-            return journal.id !== e.target.value
-        }))
     }
 
     return (
@@ -55,7 +45,6 @@ export default function WorkoutHistory({ journals, setJournals }) {
                                                         <p>{workout.duration}s</p>
                                                         <div className='row'>
                                                             <button className='edit-button' id={workout.id} onClick={handleUpdateWorkout}>&#xFE19;</button>
-                                                            {/* <button className='button' value={workout.id} onClick={deleteStrengthSet}>Delete</button> */}
                                                         </div>
                                                     </div>
                                                 )

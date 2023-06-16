@@ -24,7 +24,7 @@ function Navbar() {
 
   return (
     <nav className="">
-      <Link to="/home"><h1 className="title">FitLog</h1></Link>
+      <Link to="/"><h1 className="title">FitLog</h1></Link>
       {user.email !== "" && <User />}
       {user.email === "" ? <Link to="/login"><button type="button">Login</button></Link> : <Logout />}
     </nav>
