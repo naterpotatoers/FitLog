@@ -50,6 +50,7 @@ export default function AddStrengthSet({ setJournals }) {
                         className='form-input'
                         value={journal.reps}
                         aria-label='Reps'
+                        tabIndex={-1}
                         type="range"
                         min="1"
                         max="30"
@@ -73,6 +74,7 @@ export default function AddStrengthSet({ setJournals }) {
                         className='form-range'
                         value={journal.weight}
                         aria-label='Weight'
+                        tabIndex={-1}
                         type="range"
                         min="0"
                         max="500"
@@ -97,6 +99,7 @@ export default function AddStrengthSet({ setJournals }) {
                         className='form-range'
                         value={journal.duration}
                         aria-label='Duration (seconds)'
+                        tabIndex={-1}
                         type="range"
                         min="1"
                         max="120"

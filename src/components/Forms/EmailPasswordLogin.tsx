@@ -17,7 +17,7 @@ export default function EmailPasswordLoginForm() {
         try {
             const response = await signInWithEmailAndPassword(auth, formDetails.email, formDetails.password)
             console.log(response)
-            navigate('/home')
+            navigate('/')
         }
         catch (error) {
             console.log(error)
@@ -54,9 +54,9 @@ export default function EmailPasswordLoginForm() {
                         onChange={(e) => setFormDetails({ ...formDetails, password: e.target.value })}
                     />
                 </div>
-                <button onClick={loginEmailPassword}>Login</button>
+                <button className='primary-button' onClick={loginEmailPassword}>Login</button>
             </form>
-            <p>Don't have an account? Create one <Link to="/register">here</Link></p>
+            <p>Don't have an account? Register <Link to="/register">here</Link></p>
         </div >
     )
 }

@@ -52,7 +52,7 @@ export default function EmailPasswordRegistrationForm() {
                         onChange={(e) => setFormDetails({ ...formDetails, password: e.target.value })}
                     />
                 </div>
-                <button onClick={registerEmailPassword}>Register</button>
+                <button className='primary-button' onClick={registerEmailPassword}>Register</button>
             </form>
             <p>Already have an account? Login <Link to="/login">here</Link></p>
         </div >
