@@ -30,12 +30,12 @@ export default function WorkoutHistory({ journals, setJournals }) {
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
                     <div key={date} className='strength-journal-workout'>
-                        <h3 className='subtitle sticky'>{date}</h3>
+                        <h3 className='sticky'>{date}</h3>
                         <div className='border'>
                             {Object.keys(groupedWorkouts[date]).map((exercise) => {
                                 return (
                                     <div key={date + exercise} className='strength-journal-exercise'>
-                                        <h4 className='subtitle'>{exercise}</h4>
+                                        <h4 className=''>{exercise}</h4>
                                         {
                                             groupedWorkouts[date][exercise].map((workout: StrengthJournalDTO) => {
                                                 return (
