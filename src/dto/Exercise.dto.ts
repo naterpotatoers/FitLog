@@ -6,6 +6,11 @@ export type ExerciseDTO = {
 
 export const MOCK_EXERCISES: ExerciseDTO[] = [
     {
+        id: "",
+        muscle_group: "",
+        description: ""
+    },
+    {
         id: "Leg Curl Machine",
         muscle_group: "Legs",
         description: ""

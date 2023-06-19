@@ -27,6 +27,7 @@ export default function WorkoutHistory({ journals, setJournals }) {
                     journals={journals}
                     setJournals={setJournals}
                 />}
+
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
                     <div key={date} className='strength-journal-workout'>
