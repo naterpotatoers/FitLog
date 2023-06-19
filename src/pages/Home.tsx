@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
-import { ExerciseDTO, MOCK_EXERCISES } from '../dto/Exercise.dto';
 
 import AddStrengthSet from '../components/Forms/AddStrengthSet'
 import WorkoutHistory from '../components/WorkoutHistory'
 import { getUserStrengthJournals } from '../api/journals.api'
+import WorkoutHistoryFilter from '../components/WorkoutHistoryFilter';
 
 export default function Home() {
   const [journals, setJournals] = useState<StrengthJournalDTO[]>([])
@@ -38,15 +38,7 @@ export default function Home() {
   return (
     <div className='grid'>
       <AddStrengthSet setJournals={setJournals} />
-      <div className='row'>
-        <label htmlFor='filter'>Filter by exercise:</label>
-        <select name='filter' id='filter' onChange={handleJournalFilter} className='form-input'>
-          {MOCK_EXERCISES.map((exercise: ExerciseDTO) => {
-            return <option key={exercise.id} value={exercise.id}>{exercise.id}</option>
-          }
-          )}
-        </select>
-      </div>
+      <WorkoutHistoryFilter handleJournalFilter={handleJournalFilter} />
       <WorkoutHistory journals={journals} setJournals={setJournals} />
     </div>
   )
