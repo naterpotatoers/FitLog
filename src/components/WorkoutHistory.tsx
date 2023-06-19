@@ -19,7 +19,7 @@ export default function WorkoutHistory({ journals, setJournals }) {
 
     return (
         <div className='grid'>
-            <h2 className='title'>Workouts</h2>
+            <h2 className='title'>Workout History</h2>
             {dialogHandler.state === "editing" &&
                 <UpdateStrengthSetDialog
                     dialogHandler={dialogHandler}
@@ -27,6 +27,7 @@ export default function WorkoutHistory({ journals, setJournals }) {
                     journals={journals}
                     setJournals={setJournals}
                 />}
+
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
                     <div key={date} className='strength-journal-workout'>

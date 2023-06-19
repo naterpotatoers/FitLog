@@ -53,7 +53,7 @@ export default function UpdateStrengthSetDialog({ dialogHandler, setDialogHandle
 
     return (
         <dialog open={dialogHandler.state === "editing"} className='dialog'>
-            <div className='grid'>
+            <div className='grid card popout'>
                 <h2 className='title'>Update Strength Workout</h2>
                 <form className='card'>
                     <div className='form-item'>
