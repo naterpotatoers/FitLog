@@ -5,7 +5,7 @@ export default function WorkoutHistoryFilter({ handleJournalFilter }) {
         <div className='grid'>
             <div className='card'>
                 <div className='form-item'>
-                    <label htmlFor='filter'>Filter by exercise:</label>
+                    <h3>Filter Exercises</h3>
                     <select name='filter' id='filter' onChange={handleJournalFilter} className='form-input'>
                         {MOCK_EXERCISES.map((exercise: ExerciseDTO) => {
                             return <option key={exercise.id} value={exercise.id}>{exercise.id}</option>

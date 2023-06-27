@@ -2,8 +2,9 @@ import { StrengthJournalDTO } from '../dto/StrengthJournal.dto'
 import { filterStrengthJournals } from '../common/filterJournals';
 import { useState } from 'react';
 import UpdateStrengthSetDialog from './Forms/UpdateStrengthSetDialog';
+import WorkoutHistoryFilter from './WorkoutHistoryFilter';
 
-export default function WorkoutHistory({ journals, setJournals }) {
+export default function WorkoutHistory({ journals, setJournals, handleJournalFilter }) {
     const groupedWorkouts = filterStrengthJournals(journals)
     const [dialogHandler, setDialogHandler] = useState({
         state: "closed",
@@ -20,13 +21,16 @@ export default function WorkoutHistory({ journals, setJournals }) {
     return (
         <div className='grid'>
             <h2 className='title'>Workout History</h2>
-            {dialogHandler.state === "editing" &&
+            <WorkoutHistoryFilter handleJournalFilter={handleJournalFilter} />
+            {
+                dialogHandler.state === "editing" &&
                 <UpdateStrengthSetDialog
                     dialogHandler={dialogHandler}
                     setDialogHandler={setDialogHandler}
                     journals={journals}
                     setJournals={setJournals}
-                />}
+                />
+            }
 
             {Object.keys(groupedWorkouts).map((date) => {
                 return (
