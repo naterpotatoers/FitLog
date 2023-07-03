@@ -1,4 +1,4 @@
-import EmailPasswordRegistrationForm from '../components/Forms/EmailPasswordRegistration'
+import EmailPasswordRegistrationForm from '../components/forms/EmailPasswordRegistration'
 
 export default function Register() {
     return (

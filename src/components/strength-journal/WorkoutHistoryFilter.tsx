@@ -1,4 +1,4 @@
-import { ExerciseDTO, MOCK_EXERCISES } from '../dto/Exercise.dto';
+import { ExerciseDTO, MOCK_EXERCISES } from '../../dto/Exercise.dto';
 
 export default function WorkoutHistoryFilter({ handleJournalFilter }) {
     return (
