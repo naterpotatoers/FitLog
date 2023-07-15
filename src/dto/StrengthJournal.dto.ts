@@ -2,6 +2,8 @@ export type StrengthJournalDTO = {
   id: string;
   email: string;
   exercise: string;
+  movement_pattern?: string;
+  variation?: string;
   reps: number;
   duration: number;
   intensity: number;

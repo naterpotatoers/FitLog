@@ -4,8 +4,10 @@ import WorkoutHistory from "../components/strength-journal/WorkoutHistory";
 export default function Home() {
   return (
     <div className="grid">
-      <NutritionHistory />
-      <WorkoutHistory/>
+      <div className="grid-col-1">
+        <div>Workout History</div>
+        <div>Nutrition History</div>
+      </div>
     </div>
   );
 }

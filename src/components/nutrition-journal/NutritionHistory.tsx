@@ -1,7 +1,13 @@
-import React from 'react'
+import AddNutritionEntry from "./AddNutritionEntry";
 
 export default function NutritionHistory() {
-    return (
-        <div>NutritionHistory</div>
-    )
+  return (
+    <div className="grid">
+      <h2 className="title">Nutrition History</h2>
+      <AddNutritionEntry />
+      <div className="list">
+        List
+      </div>
+    </div>
+  );
 }

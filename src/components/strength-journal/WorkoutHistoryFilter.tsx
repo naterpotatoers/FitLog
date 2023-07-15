@@ -1,19 +1,22 @@
-import { ExerciseDTO, MOCK_EXERCISES } from '../../dto/Exercise.dto';
+import InputSelect from "../../common/InputSelect";
+import { ExerciseDTO, MOCK_EXERCISES } from "../../dto/Exercise.dto";
 
 export default function WorkoutHistoryFilter({ handleJournalFilter }) {
-    return (
-        <div className='grid'>
-            <div className='card'>
-                <div className='form-item'>
-                    <h3>Filter Exercises</h3>
-                    <select name='filter' id='filter' onChange={handleJournalFilter} className='form-input'>
-                        {MOCK_EXERCISES.map((exercise: ExerciseDTO) => {
-                            return <option key={exercise.id} value={exercise.id}>{exercise.id}</option>
-                        }
-                        )}
-                    </select>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <div className="grid">
+      <div className="card">
+        <InputSelect
+          name="exercise"
+          label="Exercise"
+          options={MOCK_EXERCISES.map((exercise: ExerciseDTO) => {
+            return {
+              label: exercise.id,
+              value: exercise.id,
+            };
+          })}
+          onChange={handleJournalFilter}
+        />
+      </div>
+    </div>
+  );
 }

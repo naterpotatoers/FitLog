@@ -76,7 +76,6 @@ form {
 .form-input:focus:not([type="range"]) {
   outline: none;
   border-color: var(--accent);
-  transform: scale(1.02);
   transition: transform ease 0.2s, box-shadow ease 0.2s;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
 }

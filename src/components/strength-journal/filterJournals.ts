@@ -1,6 +1,6 @@
-import { StrengthJournalDTO } from "../dto/StrengthJournal.dto";
-import { GroupedStrengthJournalsDTO } from "../dto/GroupedStrengthJournals.dto";
-import { formatCreatedDate } from "./formatCreatedDate";
+import { StrengthJournalDTO } from "../../dto/StrengthJournal.dto";
+import { GroupedStrengthJournalsDTO } from "../../dto/GroupedStrengthJournals.dto";
+import { formatCreatedDate } from "../../common/formatCreatedDate";
 
 export function filterStrengthJournals(journals: StrengthJournalDTO[]): GroupedStrengthJournalsDTO[] {
     const result = journals.reduce((acc, workout) => {

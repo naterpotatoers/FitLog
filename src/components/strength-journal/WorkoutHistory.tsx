@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { getUserStrengthJournals } from "../../api/journals.api";
-import { filterStrengthJournals } from "../../common/filterJournals";
+import { filterStrengthJournals } from "./filterJournals";
 import {
   MOCK_STRENGTH_JOURNAL_ENTRIES,
   StrengthJournalDTO,
@@ -42,15 +42,15 @@ export default function WorkoutHistory() {
     });
   };
 
-    // comment out the following useEffect to use the mock data
+  // comment out the following useEffect to use the mock data
   useEffect(() => {
     const getJournals = async () => {
-      const result = await getUserStrengthJournals()
-      setJournals(result)
-      originalJournals.current = result
-    }
-    getJournals()
-  }, [])
+      const result = await getUserStrengthJournals();
+      setJournals(result);
+      originalJournals.current = result;
+    };
+    getJournals();
+  }, []);
 
   return (
     <div className="grid">
